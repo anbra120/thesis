@@ -2,11 +2,10 @@ import glob
 import errno
 import csv
 import src.DataTitle as myModule
-import src.DecisionTree as myModule
+from src import DecisionTree
 
 from array import *
 #from sklearn import svm
-
 
 
 def writer(data):
@@ -38,7 +37,6 @@ def get_average_word(data):
     for amount in data:
         sum += data[amount]
         count += 1
-    print(count)
     return sum/count
 
 
@@ -62,7 +60,6 @@ def get_amount_words(data):
     for text in data:
         amount = len(text.split())
         result.append(amount) #extend
-    print(get_average_word(result))
     return result
 
 
@@ -79,7 +76,6 @@ def get_data():
     data_r += get_text(path)
     amount_r = get_amount_words(data_r)
 
-    print()
 
     path = get_path_fake_title()
     data_f = get_text(path)
@@ -88,15 +84,11 @@ def get_data():
     data_f += get_text(path)
     amount_f = get_amount_words(data_f)
 
-    print()
-
     average = get_average(amount_f, amount_r)
     print("The average is: " + str(average))
-    tree = myModule.DecisionTree()
-    tree.fake_title(amount_f, average)
-    print()
-    tree.real_title(amount_r, average)
- #   data = myModule.DataTitle(data_r, data_f, amount_r, amount_f, get_average_word(amount_r), get_average_word(amount_f))
+    x= DecisionTree.fake_title(amount_f, average)
+    y= DecisionTree.real_title(amount_r, average)
+    #data = myModule.DataTitle(data_r, data_f, amount_r, amount_f, get_average_word(amount_r), get_average_word(amount_f))
     return
 
 
@@ -108,36 +100,5 @@ tree.fake_title(data, average_word)
 print()
 tree.real_title(data2, average_word)
 
-"""
-
-"""
-def get_text(path):
-    data = []
-    fs = glob.glob(path)
-    for name in fs:
-        try:
-            with open(name, encoding="utf8",errors='ignore') as f:
-                amount = len(f.read().split())
-                data.append(amount) #extend
-        except IOError as exc:
-            if exc.errno != errno.EISDIR:
-                raise
-    return data
-    """
-
-""""   path = get_path_real_title_2()
-    data, amount += get_text(path)
-
-    path = get_path_fake_title()
-    data_F = get_text(path)
-
-    path = get_path_fake_title_2()
-    data_F += get_text(path)
-    d = myModule.DataTitle(data, data_F, amount, amount_F)
-    average_word = get_average_word(data) + get_average_word(data2)
-    return average_word/2, data, data_F
-
-
-    average_word, data,data2 = get_data()
 """
 
