@@ -25,3 +25,27 @@ def real_title(data, average):
           " are correct and " + str(wrong) + " are wrong")
 
 
+def fake_text(data, average):
+    print("Testin fake text....")
+    correct = 0
+    wrong = 0
+    for value in data:
+        if value > average:
+            wrong += 1
+        else:
+            correct += 1
+    print("For fake text: " + str(correct) +
+          " are correct and " + str(wrong) + " are wrong")
+
+
+def real_text(data, average):
+    print("Testin real text....")
+    correct = 0
+    wrong = 0
+    for value in data:
+        if value < average:
+            wrong += 1
+        else:
+            correct += 1
+    print("For fake text: " + str(correct) +
+          " are correct and " + str(wrong) + " are wrong")

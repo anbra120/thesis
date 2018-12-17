@@ -65,7 +65,7 @@ def tree(average, amount_f, amount_r):
     DecisionTree.fake_title(amount_f, average)
     DecisionTree.real_title(amount_r, average)
 
-
+"""
 data_title = get_data_title()
 
 nouns_f =DataProcessing.countNouns(data_title.text_f)
@@ -79,21 +79,12 @@ r_average = DataProcessing.get_average_word(nouns_r)
 
 f2_average = DataProcessing.get_average_word(nouns_f2)
 r2_average = DataProcessing.get_average_word(nouns_r2)
-
-"""
-print(f_average)
-print(r_average)
-
-print(f2_average)
-print(r2_average)
 """
 
-#tree(data_title.average, data_title.amount_f, data_title.amount_r)
 data_text = get_data_text()
-print(data_text.amount_r)
-print(data_text.amount_f)
 
-
+DecisionTree.fake_text(data_text.amount_r, data_text.averageV)
+DecisionTree.real_text(data_text.amount_r, data_text.averageV)
 
 
 """ TESTING, TESTING , TESTING 
