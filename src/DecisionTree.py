@@ -1,51 +1,40 @@
 #check the amount of word in a title or text
-def fake_title(data, average):
-    print("Testin fake titles....")
+def under_average(data, average):
     correct = 0
     wrong = 0
     for value in data:
         if value < average:
-            wrong += 1
-        else:
             correct += 1
-    print("For fake titles: " + str(correct) +
+        else:
+            wrong += 1
+    print("For under average: " + str(correct) +
           " are correct and " + str(wrong) + " are wrong")
 
 
-def real_title(data, average):
-    print("Testin real titles....")
+def above_average(data, average):
     correct = 0
     wrong = 0
     for value in data:
         if value > average:
-            wrong += 1
-        else:
             correct += 1
-    print("For fake titles: " + str(correct) +
+        else:
+            wrong += 1
+    print("For above average : " + str(correct) +
           " are correct and " + str(wrong) + " are wrong")
 
 
-def fake_text(data, average):
-    print("Testin fake text....")
-    correct = 0
-    wrong = 0
-    for value in data:
-        if value > average:
-            wrong += 1
-        else:
-            correct += 1
-    print("For fake text: " + str(correct) +
-          " are correct and " + str(wrong) + " are wrong")
 
 
-def real_text(data, average):
-    print("Testin real text....")
-    correct = 0
-    wrong = 0
-    for value in data:
-        if value < average:
-            wrong += 1
-        else:
-            correct += 1
-    print("For fake text: " + str(correct) +
-          " are correct and " + str(wrong) + " are wrong")
+
+
+""" TESTING, TESTING , TESTING 
+
+def writer(data):
+    with open("G:/Thesis/Features/Titels.csv", "w") as csv_file:
+        writer = csv.writer(csv_file)
+        for line in data:
+            writer.writerows(line)
+
+
+
+"""
