@@ -2,7 +2,7 @@ import nltk
 import math
 
 
-#get an array of the amount of words for each text or title
+# get an array of the amount of words for each text or title
 def get_amount_words(data):
     result = []
     count = 0
@@ -12,6 +12,11 @@ def get_amount_words(data):
         count += 1
     return result, count
 
+
+def get_average(data1, data2):
+    average1 = get_average_word(data1)
+    average2 = get_average_word(data2)
+    return (average1 + average2) / 2
 
 # get the average of a words
 def get_average_word(data):
@@ -38,7 +43,7 @@ def get_variance(average, amount):
     return math.sqrt(variance/count)
 
 
-def get_newAverage(variance, amount, average):
+def get_variance_average(variance, amount, average):
     sum = 0
     count= 0
     count2=0
@@ -49,8 +54,9 @@ def get_newAverage(variance, amount, average):
         count2 += 1
     return sum/count
 
-#print("Check the amount of nouns in relation")
-def count_nouns_rel(data, count):
+
+# print("Check the amount of nouns in relation")
+def count_nouns(data, count):
     result = []
     i = 0
     for news in data:
@@ -66,35 +72,7 @@ def count_nouns_rel(data, count):
     return result
 
 
-def countNouns(data):
-  #  print("Check the amount of nouns")
-    result = []
-    for news in data:
-        amount = 0
-        tokens = nltk.word_tokenize(news)
-        tagged = nltk.pos_tag(tokens)
-        for word in tagged:
-            if "NN" in word or "NNPS" in word or "NNS" in word or "NNP" in word:
-            #if "NN" in word or "NNS" in word:
-                amount += 1
-        result.append(amount)
-    return result
-
-
-def countNounsX(data):
-    result = []
-    for news in data:
-        amount = 0
-        tokens = nltk.word_tokenize(news)
-        tagged = nltk.pos_tag(tokens)
-        for word in tagged:
-            if "NN" in word or "NNS" in word:
-                amount += 1
-        result.append(amount)
-    return result
-
-
-def count_nouns_relX(data, count):
+def count_nouns_x(data, count):
     result = []
     i = 0
     for news in data:
@@ -108,6 +86,7 @@ def count_nouns_relX(data, count):
         result.append(amount)
         i += 1
     return result
+
 
 def count_adverbs_rel(data, count):
     result = []
@@ -119,20 +98,13 @@ def count_adverbs_rel(data, count):
         for word in tagged:
             if "RB" in word or "RBR" in word or "RBS" in word:
                 amount += 1
-        amount = count[i]/amount
+        if amount != 0:
+            amount = count[i]/amount
         result.append(amount)
         i += 1
     return result
 
-#
-def count_adverbs(data):
-    result = []
-    for news in data:
-        amount = 0
-        tokens = nltk.word_tokenize(news)
-        tagged = nltk.pos_tag(tokens)
-        for word in tagged:
-            if "RB" in word or "RBR" in word or "RBS" in word:
-                amount += 1
-        result.append(amount)
-    return result
+
+def get_qoutes(data):
+    print(data)
+    return "finish"

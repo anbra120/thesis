@@ -1,4 +1,4 @@
-#check the amount of word in a title or text
+# tree for data, where you expect, that the amount is under the average
 def under_average(data, average):
     correct = 0
     wrong = 0
@@ -11,6 +11,7 @@ def under_average(data, average):
           " are correct and " + str(wrong) + " are wrong")
 
 
+# tree for data, where you expect, that the amount is above the average
 def above_average(data, average):
     correct = 0
     wrong = 0

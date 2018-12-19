@@ -41,16 +41,18 @@ def plot_contours(ax, clf, xx, yy, **params):
     out = ax.contourf(xx, yy, Z, **params)
     return out
 
-def start(data, target):
+def start(data, target, title1, title2):
+
+    # Take the first two features. We could avoid this by using a two-dim dataset
     X = data
     y = target
 
     # we create an instance of SVM and fit out data. We do not scale our
     # data since we want to plot the support vectors
-    C = 1.0  # SVM regularization parameter
+    C = 10.0  # SVM regularization parameter C =1.0
     models = (svm.SVC(kernel='linear', C=C),
               svm.LinearSVC(C=C),
-              svm.SVC(kernel='rbf', gamma=0.7, C=C),
+              svm.SVC(kernel='rbf', gamma=1, C=C),
               svm.SVC(kernel='poly', degree=3, C=C))
     models = (clf.fit(X, y) for clf in models)
 
@@ -73,8 +75,8 @@ def start(data, target):
         ax.scatter(X0, X1, c=y, cmap=plt.cm.coolwarm, s=20, edgecolors='k')
         ax.set_xlim(xx.min(), xx.max())
         ax.set_ylim(yy.min(), yy.max())
-        ax.set_xlabel('Sepal length')
-        ax.set_ylabel('Sepal width')
+        ax.set_xlabel(title1)
+        ax.set_ylabel(title2)
         ax.set_xticks(())
         ax.set_yticks(())
         ax.set_title(title)
