@@ -34,3 +34,6 @@ def fake_text():
 def fake_text_2():
     return 'G:/Thesis/Horne2017_FakeNewsData/Public Data/Random Poltical News Dataset/Fake/*.txt'
 
+
+def hyp():
+    return 'G:/Thesis/Data_Hyper/articles-training-bypublisher-20181122.xml'

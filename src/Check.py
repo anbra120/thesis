@@ -1,7 +1,16 @@
 from src import DecisionTree, Data, DataProcessing, Punctuation
 from src.Punctuation import Punctuation
 
-##check the word count with variance
+
+# start checking word count with variance and without variance
+def word_count(data_text, data_title):
+    word_count_variance(data_text, data_title)
+    print()
+    word_count_total(data_text, data_title)
+    print()
+
+
+# check the word count with variance
 def word_count_variance(data_text, data_title):
     print("Check word count text with variance...")
     DecisionTree.above_average(data_text.amount_r, data_text.averageV)
@@ -13,7 +22,7 @@ def word_count_variance(data_text, data_title):
 
 
 # check the word count without variance
-def word_count(data_text, data_title):
+def word_count_total(data_text, data_title):
     print("Check word count text...")
     DecisionTree.above_average(data_text.amount_r, data_text.average)
     DecisionTree.under_average(data_text.amount_f, data_text.average)
@@ -21,6 +30,13 @@ def word_count(data_text, data_title):
     print("Check word count title...")
     DecisionTree.under_average(data_title.amount_r, data_title.average)
     DecisionTree.above_average(data_title.amount_f, data_title.average)
+
+
+# start checking amount of adverbs. One in relation and one absolute
+def adverb(data):
+    adverb_absolute(data)
+    print()
+    adverb_rel(data)
 
 
 # check the adverb in relation
@@ -36,7 +52,7 @@ def adverb_rel(data):
 
 
 # check the adverb
-def adverb(data):
+def adverb_absolute(data):
     print("Check adverb without relation...")
     adverb_r = DataProcessing.count_adverbs(data.text_r)
     adverb_f = DataProcessing.count_adverbs(data.text_f)
@@ -76,6 +92,7 @@ def nouns(data):
     DecisionTree.under_average(nouns_f, average)
 
 
+# check the punctuation
 def punctuation(data):
     pr = Punctuation(data.text_r, data.amount_r)
     pf = Punctuation(data.text_f, data.amount_f)
@@ -95,3 +112,7 @@ def result_punctuation(string, data_r, data_f):
     DecisionTree.above_average(data_r, average)
     DecisionTree.under_average(data_f, average)
     print()
+
+
+def do_decision_tree(data, average):
+    print("")

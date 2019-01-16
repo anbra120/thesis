@@ -4,10 +4,12 @@ class Data:
     def __init__(self, data_real, data_fake):
         self.text_f = data_fake
         self.text_r = data_real
+        self.text = self.text_r + self.text_f
 
-        self.amount_r, self.count_r = DataProcessing.get_amount_words(data_real)
-        self.amount_f, self.count_f = DataProcessing.get_amount_words(data_fake)
-        self.amount = self.amount_f + self.amount_r
+        self.amount_r, self.amount_fr = DataProcessing.get_amount_words(data_real)
+        self.amount_f, self.amount_ff = DataProcessing.get_amount_words(data_fake)
+        self.amount = self.amount_r + self.amount_f
+        self.amount_fit = self.amount_fr + self.amount_ff
 
         self.average_r = DataProcessing.get_average_word(self.amount_r)
         self.average_f = DataProcessing.get_average_word(self.amount_f)
@@ -20,7 +22,7 @@ class Data:
         self.average_fV = DataProcessing.get_variance_average(self.variance_f, self.amount_f, self.average)
         self.averageV = (self.average_fV + self.average_rV) / 2
 
-        self.category = categorize(self.count_r, self.count_f)
+        self.category = categorize(len(self.amount_r), len(self.amount_f))
 
 
 # categorize the data for the SVM
